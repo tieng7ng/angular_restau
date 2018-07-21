@@ -1,0 +1,19 @@
+{
+    "anonymous":            "Anonyme",
+    "female":               "Féminin",
+    "color require":        "Couleur est obligatoire",
+    "firstname":            "Prénom",
+    "firstname require":    "Prénom est obligatoire",
+    "firstname min 3 chars":"Prénom doit faire minimum 3 caractères",
+    "lastname":             "Nom",
+    "lastname require":     "Nom est obligatoire",
+    "lastname min 3 chars": "Nom doit faire minimum 3 caractères",
+    "login":                "Login",
+    "login require":        "Login est obligatoire",
+    "login min 3 chars":    "Login doit faire minimum 3 caractères",
+    "male":                 "Masculin",
+    "search personn":       "Rechercher personne",
+    "welcome":              "Bienvenue"
+
+
+}

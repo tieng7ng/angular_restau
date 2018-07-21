@@ -1,0 +1,77 @@
+<app-header (messageIdentityEvent)="receiveMessage($event)"></app-header>
+<p>
+  user works!
+</p>
+<!--
+{{errorMessage}}
+
+<div class="form-group">
+    <label for="login">User login</label>
+    <input type="text" class="form-control" name="login" [(ngModel)]="login">
+</div>
+<div class="form-group">
+    <label for="firstname">User firstname</label>
+    <input type="text" class="form-control" name="firstname" [(ngModel)]="firstname">
+</div>
+<div class="form-group">
+    <label for="lastname">User lastname</label>
+    <input type="text" class="form-control" name="lastname" [(ngModel)]="lastname">
+</div>
+
+<ng-template [ngIf]="userDisplay === 0">
+<div class="form-group">
+     <button type="button" (click)="search()">Get User</button>
+</div>
+
+
+<div *ngIf="loading">loading...</div>
+<div class='table-responsive'>
+    <table class='table'>
+        <thead>
+            <tr>
+                <th>Login</th>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of listUser;">
+                <td>{{user.login}}</td>
+                <td>{{user.firstname}}</td>
+                <td>{{user.lastname}}</td>
+                <button type="button" (click)="displayForm(user.login, user.firstname, user.lastname)">Update</button>
+                <button type="button" (click)="delete(user.login)">Delete</button> 
+            </tr>
+        </tbody>
+    </table>
+</div>
+</ng-template>
+
+<ng-template [ngIf]="userDisplay === 1">
+    <div class="form-group">
+            <button type="button" (click)="add()">Add User</button>
+    </div>
+</ng-template>
+        
+<ng-template [ngIf]="userDisplay === 2">
+        <div class="form-group">
+                <button type="button" (click)="add()">Update User</button>
+        </div>
+    </ng-template>
+-->
+<p>{{ 10.6 | currency:'EUR':'.3' }}</p>
+
+{{ asyncGreeting }}
+<div>{{ asyncGreeting | async }}</div>
+
+<div *ngIf="asyncGreetling | async as message; else messageWait">{{ message }}</div>
+<ng-template #messageWait><div [style.display]="displayValue">Attente message</div></ng-template>
+<br>
+
+<div *ngIf="asyncUser | async as user; else userWait">{{ user.name }}</div>
+<ng-template #userWait>Attente utilisateur</ng-template>
+
+<hr>
+
+<app-form-user></app-form-user>

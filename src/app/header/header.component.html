@@ -1,0 +1,17 @@
+<p>
+  header works!
+</p>
+
+<h1>
+  {{ "welcome" | translate }}  {{messageHeadIdentity}}
+  <img [src]="COUNTRY_UK" (click)="switchLanguage('en')"/>
+  <img [src]="COUNTRY_FR" (click)="switchLanguage('fr')"/>
+  <img [src]="COUNTRY_DE" (click)="switchLanguage('de')"/>
+  <a (click)="logout()">logout</a>
+</h1>
+
+<nav>
+  <a [routerLink]="['/user']">{{ "search personn" | translate }}</a> |
+  <a [routerLink]="['/user/add']">User add</a> |
+  <a [routerLink]="['/user/add']">User add</a> |
+</nav>

@@ -1,0 +1,136 @@
+<p>
+  form-user works!
+  {{ "welcome" | translate }}
+</p>
+
+
+
+{{userDisplay}}
+<ng-template [ngIf]="userDisplay === 0">
+<div>
+  <form [formGroup]="formUser" (ngSubmit)="search()">
+    <fieldset>
+      <legend>
+        {{ "search personn" | translate }}  
+      </legend>
+      <div class="form-group">
+        <input type="hidden" id="id" formControlName="id">
+        <label for="male" class="radio-inline">
+          <input type="radio" id="male" value="1" formControlName="gender">{{ "male" | translate }}
+        </label>
+        <label for="femal" class="radio-inline">
+          <input type="radio" id="femal" value="0" formControlName="gender">{{ "female" | translate }}
+        </label>
+      </div>
+      <div class="form-group">
+        <label for="login">{{ "login" | translate }}</label>
+        <input type="text" class="form-control" id="login" formControlName="login">
+      </div>
+            
+      <div class="form-group">
+        <label for="lastname">{{ "lastname" | translate }}</label>
+        <input type="text" class="form-control" id="lastname" formControlName="lastname">
+      </div>
+
+      <div class="form-group">
+        <label for="firstname">{{ "firstname" | translate }}</label>
+        <input type="text" class="form-control" id="firstname" formControlName="firstname">
+      </div>
+      <div *ngIf="formErrors.firstname" class="alert alert-danger">
+        {{formErrors.firstname}}
+      </div>
+
+      <div class="form-group">
+        <label for="favoriteColor">Couleur favorite</label>
+        <select class="form-control" id="favoritecolor">
+          <option *ngFor="let color of favoriteColor" [value]="color">{{color}}</option>
+        </select>
+      </div>
+      <div class="form-group">
+          <label for="birthday">Anniversaire</label>
+          <input type="date" class="form-control" id="birthday">
+      </div>
+      <button type="submit" class="btn btn-success" [disabled]="!formUser.valid">Chercher</button>                    
+    </fieldset>
+  </form>
+</div>
+<div class='table-responsive'>
+  <table class='table'>
+      <thead>
+          <tr>
+              <th>Login</th>
+              <th>Firstname</th>
+              <th>Lastname</th>
+              <th>Action</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let user of listUser;">
+              <td>{{user.id}} - {{user.login}}</td>
+              <td>{{user.firstname}}</td>
+              <td>{{user.lastname}}</td>
+              <button type="button" (click)="displayForm(user)">Update</button>
+              <button type="button" (click)="delete(user.login)">Delete</button> 
+          </tr>
+      </tbody>
+  </table>
+</div>
+</ng-template>
+
+<ng-template [ngIf]="userDisplay === 1">
+{{ formUser.value | json }}
+{{ formUser.status | json }}
+<div>
+  <form [formGroup]="formUser" (ngSubmit)="add()">
+    <fieldset>
+      <legend>
+        Formulaire Personne
+      </legend>
+      <div class="form-group">
+        <label for="male" class="radio-inline">
+          <input type="radio" id="male" value="1" formControlName="gender">Masculin
+        </label>
+        <label for="femal" class="radio-inline">
+          <input type="radio" id="femal" value="0" formControlName="gender">Féminin
+        </label>
+      </div>
+      <div class="form-group">
+        <label for="login">login</label>
+        <input type="text" class="form-control" id="login" formControlName="login">
+      </div>
+      <div *ngIf="formErrors.login" class="alert alert-danger">
+          {{formErrors.login}}
+      </div>
+
+      <div class="form-group">
+        <label for="lastname">Nom</label>
+        <input type="text" class="form-control" id="lastname" formControlName="lastname">
+      </div>
+      <div *ngIf="formErrors.lastname" class="alert alert-danger">
+        {{formErrors.lastname}}
+      </div>
+
+      <div class="form-group">
+        <label for="firstname">Prénom</label>
+        <input type="text" class="form-control" id="firstname" formControlName="firstname">
+      </div>
+      <div *ngIf="formErrors.firstname" class="alert alert-danger">
+        {{formErrors.firstname}}
+      </div>
+
+      <div class="form-group">
+        <label for="favoriteColor">Couleur favorite</label>
+        <select class="form-control" id="favoritecolor">
+          <option *ngFor="let color of favoriteColor" [value]="color">{{color}}</option>
+        </select>
+      </div>
+      <div class="form-group">
+          <label for="birthday">Anniversaire</label>
+          <input type="date" class="form-control" id="birthday">
+      </div>
+      <button type="submit" class="btn btn-success" [disabled]="!formUser.valid">Soumettre</button>                    
+      <button type="reset" class="btn btn-default">Effacer</button>
+    </fieldset>
+  </form>
+</div>
+</ng-template>
